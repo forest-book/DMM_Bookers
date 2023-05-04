@@ -28,6 +28,14 @@ body {
     margin: 33px;
 }
 
+a {
+    color: #000;
+}
+
+a:visited {
+    color: #666;
+}
+
 h1 {
     display: block;
     font-size: 2em;
