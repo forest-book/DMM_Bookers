@@ -24,6 +24,30 @@
     </tbody>
 </table>
 
+    <h2>New Book</h2>
 
+    <% if @book.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= @book.errors.count %>error prohibited this book from being saved:
+            </h2>
+            <ul>
+                <% @book.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+<!-- form_with部分 -->
+    <%= form_with model: @book, url: '/books', method: :post do |f| %>
 
-<%# to do 新規作成を合体 new.html %>
+    <div>
+        <label>Title</label>
+        <div class="field"><%= f.text_field :title %></div>
+	</div>
+    <div>
+        <label>Body</label>
+        <div class="field"><%= f.text_area :body %></div>
+	</div>
+    <div class="field"><%= f.submit 'Create Book' %></div>
+
+    <% end %>
