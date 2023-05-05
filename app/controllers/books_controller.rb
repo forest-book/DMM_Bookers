@@ -39,8 +39,12 @@ class BooksController < ApplicationController
 
   def destroy
     book = Book.find(params[:id])
-    book.destroy
-    redirect_to '/books', status: :see_other
+    if book.destroy
+      flash[:notice] = "Book was successfully destroyed."
+      redirect_to '/books', status: :see_other
+    else
+      render :index, status: :unprocessable_entity
+    end
   end
 
   private
